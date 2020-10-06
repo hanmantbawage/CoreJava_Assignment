@@ -1,0 +1,128 @@
+48.	Create an Abstract class Processor with int member variable data  and method showData to display data value. Create abstract method process() to define processing of member data. Create a class  Factorial using abstract class Processor  to calculate and print factorial of a number by overriding the process method. b. Create a class Circle using abstract class Processor to calculate and print area of a circle by overriding the process method.Ask user to enter choice (factorial or circle area).  Also ask data to work upon. Use Processor class reference to achieve this mechanism.
+->abstract class Processor
+{
+
+	double data;
+
+	void showData()
+	{
+
+		System.out.println(data);
+
+	}
+
+	abstract void process();
+
+}
+
+class factorial extends Processor
+{
+
+	void process()
+	{
+
+		int n=5,fact=1;
+
+		for(int i=0;i<n;i++)
+		{
+
+			data=fact*i;
+   
+		}
+
+	}
+
+}
+
+class circle extends Processor
+{
+
+	void process()
+	{
+
+		int r=5;
+	
+		data=3.14f*r*r;
+
+	}
+
+}
+
+class AbstarctDemo
+{
+
+	public static void main(String args[])
+	{
+
+		Processor p=new factorial();
+
+		Processor p1=new circle();
+
+		p.process();
+
+		p1.process();
+
+		p.showData();
+
+		p1.showData();
+	
+	}
+
+}
+=======================================================================================================================================================================
+49.	Create Interface Taxable with members salesTax=7% and incomeTax=10.5%. create abstract method calcTax(). a. Create class Employee(empId,name,salary) and implement Taxable to calculate incomeTax on yearly salary. b. Create class Product(pid,price,quantity) and implement Taxable to calculate salesTax on unit price of product. c. Create class for main method(Say XYZ), accept employee information and a product information from user and print income tax and sales tax respectively.
+->    interface taxable
+{
+	double salesTax = 0.7;
+	double incomeTax = 0.105;
+
+	void calcTax();
+}
+class Employee implements taxable
+{
+	int empid;
+	int salary;
+	String name;
+	
+	Employee(int empid,int salary,String name)
+	{
+		this.empid = empid;
+		this.salary = salary;
+		this.name = name;
+	}
+	public void calcTax()
+	{
+		double iT = salary * incomeTax;
+		System.out.println("Calculate IncomeTax : "+iT);
+	}
+}
+class Product implements taxable
+{
+	int pid;
+	int price;
+	int quantity;
+	
+	Product(int pid,int price,int quantity)
+	{
+		this.pid = pid;
+		this.price = price;
+		this.quantity = quantity;
+	}
+	public void calcTax()
+	{
+		double sT = (price* quantity)* incomeTax;
+		System.out.println("Calculate SalesTax : "+sT);
+	}
+}
+class interfaceDemo
+{	public static void main(String args[])
+	{
+		taxable t = new Employee(1,12000,"Ritu");
+		taxable t1 = new Product(1,300,5);
+		t.calcTax();
+		t1.calcTax();
+	}
+}
+	
+
+		
